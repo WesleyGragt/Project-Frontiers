@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraControls : MonoBehaviour
@@ -9,13 +10,18 @@ public class CameraControls : MonoBehaviour
 
     void Update()
     {
-        Rotation();
+        LookUpDown();
     }
-        private void Rotation()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
 
-        transform.eulerAngles += new Vector3(-mouseY, mouseX, 0);
+    private void LookUpDown()
+    {
+        // Get current local X rotation in -180..180 range
+        Vector3 euler = transform.localEulerAngles;
+        float currentX = euler.x;
+        if (currentX > 180f) currentX -= 360f;
+
+        float newX = currentX - Input.GetAxis("Mouse Y");
+
+        transform.localEulerAngles = new Vector3(Mathf.Clamp(newX, -20f, 50f), 0, 0);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        Rotation();
+    }
+
     private void FixedUpdate()
     {
         Movement();
@@ -18,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        rb.AddForce(Vector3.forward * Input.GetAxis("Vertical"), ForceMode.Force);
+        rb.linearVelocity = transform.forward * Input.GetAxis("Vertical") * speed
+                            + transform.right * Input.GetAxis("Horizontal") * speed;
+    }
+
+    private void Rotation()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+
+        transform.Rotate(Vector3.up * mouseX);
     }
 }
