@@ -1,4 +1,6 @@
 using System;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    void Start()
+    private float gravity = 0;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -20,12 +24,29 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        notGrounded();
     }
 
     private void Movement()
     {
         rb.linearVelocity = transform.forward * Input.GetAxis("Vertical") * speed
-                            + transform.right * Input.GetAxis("Horizontal") * speed;
+                            + transform.right * Input.GetAxis("Horizontal") * speed
+                            + -transform.up * gravity;
+    }
+
+    private void notGrounded()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+        if (!Physics.Raycast(ray, 1.1f))
+        {
+            gravity = 9f;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, -transform.up * 1.1f);
     }
 
     private void Rotation()

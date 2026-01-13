@@ -5,20 +5,22 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] int maxBalls = 5;
 
-    [SerializeField] private Vector3 spawnAreaSize = new Vector3(5f, 5f, 5f);
-
     private int spawnedBalls = 0;
 
     private float timer = 0;
     private float timerStart = 0f;
 
-    private void Start()
+    private bool gameStarted = false;
+
+    public void StartGame()
     {
-        SpawnBalls();
+        gameStarted = true;
     }
 
     private void Update()
     {
+        if (!gameStarted) return;
+
         if (spawnedBalls < maxBalls)
         {
             SpawnBalls();
@@ -30,9 +32,9 @@ public class BallSpawner : MonoBehaviour
         if (Time.time > timerStart + timer)
         {
             Vector3 randomPosition = new Vector3(
-                Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
-                Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2),
-                Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2)
+                Random.Range(-transform.localScale.x / 2, transform.localScale.x / 2),
+                Random.Range(-transform.localScale.y / 2, transform.localScale.y / 2),
+                Random.Range(-transform.localScale.z / 2, transform.localScale.z / 2)
             );
             Instantiate(ballPrefab, transform.position + randomPosition, Quaternion.identity);
             spawnedBalls++;
@@ -45,6 +47,10 @@ public class BallSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, spawnAreaSize);
+
+        // Convert the local coordinate values into world
+        // coordinates for the matrix transformation.
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
     }
 }
