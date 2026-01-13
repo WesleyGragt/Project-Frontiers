@@ -48,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumRotationX: -20
   maximumRotationX: 50
+  camera: {fileID: 3815729213418131732}
+  player: {fileID: 5401416160846908142}
+  isLocked: 0
 --- !u!1 &7100846005871905974
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +63,7 @@ GameObject:
   - component: {fileID: 3815729213418131732}
   - component: {fileID: 1638043855944448888}
   - component: {fileID: 5042123706434422673}
+  - component: {fileID: 7569539659453663170}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -75,13 +79,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7100846005871905974}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0018694786, y: 0.0013086349, z: 0.0018694786, w: 0.99999565}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212377220478630846}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.214, y: 0.15, z: 0.215}
 --- !u!20 &3815729213418131732
 Camera:
   m_ObjectHideFlags: 0
@@ -185,6 +189,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &7569539659453663170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100846005871905974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcde9e9e2551aa94b98cc52da3544152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 10
+  isLerping: 1
+  rotateLerpSpeed: 10
+  isRotateLerping: 1
+  target: {fileID: 212377220478630846}
 --- !u!1 &7320468592411521146
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,3 +405,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  isLocked: 0
