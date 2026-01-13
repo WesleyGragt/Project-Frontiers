@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
 
     private float gravity = 0;
+    public bool isLocked = false;
 
     private void Start()
     {
@@ -18,13 +19,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Rotation();
+        if (!isLocked)
+        {
+            Rotation();
+        }
     }
 
     private void FixedUpdate()
     {
-        Movement();
-        notGrounded();
+        if (!isLocked)
+        {
+            Movement();
+            notGrounded();
+        }
     }
 
     private void Movement()
