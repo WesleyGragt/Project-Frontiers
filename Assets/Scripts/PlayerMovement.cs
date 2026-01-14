@@ -39,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = new Ray(transform.position, -transform.up);
         if (!Physics.Raycast(ray, 1.1f))
         {
-            gravity = 9f;
+            gravity = 3;
         }
+        else gravity = 0;
     }
 
     private void OnDrawGizmos()

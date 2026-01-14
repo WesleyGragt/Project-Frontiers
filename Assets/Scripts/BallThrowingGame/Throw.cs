@@ -50,8 +50,10 @@ public class Throw : MonoBehaviour
                 col.enabled = true;
                 rb.AddForce(transform.forward * chargeTime);
 
+                PickUp.curBall.Thrown = true;
                 PickUp.curBall = null;
                 pickup = false;
+
                 chargeTime = 0f;
             }
             else
