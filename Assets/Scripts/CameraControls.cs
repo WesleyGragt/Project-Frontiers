@@ -6,6 +6,9 @@ public class CameraControls : MonoBehaviour
 {
     [SerializeField] private float minimumRotationX = -20f;
     [SerializeField] private float maximumRotationX = 50f;
+    public Camera camera;
+    public PlayerMovement player;
+    public bool isLocked = false;
 
     private void Start()
     {
@@ -14,8 +17,11 @@ public class CameraControls : MonoBehaviour
 
     void Update()
     {
-        LookUpDown();
-        InteractWithObject();
+        if (!isLocked)
+        {
+            LookUpDown();
+            InteractWithObject();
+        }
     }
 
     private void LookUpDown()
