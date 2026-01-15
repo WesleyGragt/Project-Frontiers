@@ -13,10 +13,12 @@ public class LerpTo : MonoBehaviour
         if (isLerping)
         {
             transform.position = Vector3.Lerp(transform.position, target.position, lerpSpeed * Time.deltaTime);
+            //Debug.Log("Moving");
         }
         if (isRotateLerping)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rotateLerpSpeed * Time.deltaTime);
+            //Debug.Log("Rotating");
         }
     }
 }

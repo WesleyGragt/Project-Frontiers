@@ -33,6 +33,8 @@ public class PointGiver : MonoBehaviour
             {
                 totalPoints += points;
                 Cans.RemoveAt(i);
+
+                Debug.Log($"Can knocked down. New score: {totalPoints}");
             }
         }
     }

@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 0;
     public bool isLocked = false;
 
+    public static bool ableToMove = true;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!ableToMove) return;
+
         if (!isLocked)
         {
             Movement();

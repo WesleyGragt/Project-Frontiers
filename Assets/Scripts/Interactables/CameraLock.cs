@@ -16,6 +16,7 @@ public class CameraLock : MonoBehaviour
 
     public void LockCamera()
     {
+        Cursor.lockState = CursorLockMode.None;
         camera = cameraControls.camera;
         LerpTo camLerp = camera.GetComponent<LerpTo>();
         cameraControls.isLocked = true;
@@ -27,6 +28,7 @@ public class CameraLock : MonoBehaviour
 
     public void UnlockCamera()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         LerpTo camLerp = camera.GetComponent<LerpTo>();
         cameraControls.isLocked = false;
         cameraControls.player.isLocked = false;
