@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interactable
-  - DuckTarget
+  - Mole
   layers:
   - Default
   - TransparentFX

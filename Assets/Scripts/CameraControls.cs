@@ -22,6 +22,8 @@ public class CameraControls : MonoBehaviour
             LookUpDown();
             InteractWithObject();
         }
+
+        WhackAMoleControls();
     }
 
     private void LookUpDown()
@@ -55,5 +57,26 @@ public class CameraControls : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * 2f);
+    }
+
+    void WhackAMoleControls()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 10f;
+        mousePos = camera.ScreenToWorldPoint(mousePos);
+
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "Mole")
+                {
+                    hit.transform.GetComponent<Mole>().Whack();
+                }
+            }
+        }
     }
 }
