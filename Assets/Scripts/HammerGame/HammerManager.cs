@@ -23,18 +23,26 @@ public class HammerManager : MonoBehaviour
     private float curTime;
     private float timeOfStart;
 
-    private float currentPoints = 0f;
-    [SerializeField] private float pointsGain = 100f;
+    private int currentPoints = 0;
+    [SerializeField] private int pointsGain = 100;
 
+    private float startBallHeight = 0f;
     private float maxBallHeight = 0f;
 
     private void Start()
     {
         ballRB = ball.GetComponent<Rigidbody>();
+
+        startBallHeight = ball.transform.position.y;
     }
 
     public void StartGame()
     {
+        Debug.Log(gameStarted);
+
+        if (gameStarted) return;
+
+        camLock.LockCamera();
         hammer.SetActive(true);
         hammer.GetComponent<Animator>().enabled = false;
         gameStarted = true;
@@ -53,19 +61,20 @@ public class HammerManager : MonoBehaviour
             curTime = Time.time;
         }
 
-        if (startTimer && !hammer.GetComponent<Animator>().enabled)
+        if (!startTimer) return;
+
+        if (!hammer.GetComponent<Animator>().enabled)
         {
             powerUp();
         }
      
-        if (startTimer && Time.time > timeOfStart + timeTillSmash)
+        if (Time.time > timeOfStart + timeTillSmash)
         {
             ballRB.AddForce(Vector3.up * currentPower, ForceMode.Impulse);
 
             hammer.GetComponent<Animator>().enabled = true;
 
-            currentPower = 0;
-            
+            camLock.UnlockCamera();
             BallHeight();
         }
 
@@ -83,7 +92,7 @@ public class HammerManager : MonoBehaviour
 
         if (currentPower < 0) currentPower = 0;
         
-        Debug.Log(currentPower);    
+        Debug.Log(currentPower);
     }
 
     private void BallHeight()
@@ -95,7 +104,7 @@ public class HammerManager : MonoBehaviour
 
         if (ball.transform.position.y < maxBallHeight || ball.transform.position.y > heightToWin)
         {
-            ballRB.linearVelocity = ballRB.linearVelocity * -0.5f;
+            ballRB.linearVelocity = ballRB.linearVelocity * -0.1f;
 
             CheckHeight();
         }
@@ -103,18 +112,37 @@ public class HammerManager : MonoBehaviour
 
     private void CheckHeight()
     {
-        if (maxBallHeight > heightToWin)
+        if (currentPower == 0)
+        {
+            maxBallHeight = 0;
+            startTimer = false;
+            gameStarted = false;
+        }
+        else if (maxBallHeight > heightToWin)
         {
             currentPoints += pointsGain;
             Debug.Log($"Reached required height, gained {pointsGain} points. New total: {currentPoints}");
+
+
+            currentPower = 0;
+            maxBallHeight = 0;
+            startTimer = false;
+            gameStarted = false;
         }
         else if (ball.transform.position.y < maxBallHeight)
         {
             Debug.Log("Failed to reach Height");
-        }
 
-        maxBallHeight = 0;
-        gameStarted = false;
-        startTimer = false;
+            currentPower = 0;
+            maxBallHeight = 0;
+            startTimer = false;
+            gameStarted = false;
+        }
+    }
+
+    public void pointsToTickets()
+    {
+        TicketSystem.tickets = currentPoints;
+        currentPoints = 0;
     }
 }

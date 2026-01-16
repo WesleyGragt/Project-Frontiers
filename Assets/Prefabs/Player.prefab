@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3eea43e0357bb4c9e7daf83233340a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumRotationX: -20
+  minimumRotationX: -69
   maximumRotationX: 50
   camera: {fileID: 3815729213418131732}
   player: {fileID: 5401416160846908142}

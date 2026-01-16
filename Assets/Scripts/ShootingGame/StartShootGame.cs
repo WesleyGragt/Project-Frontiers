@@ -6,8 +6,8 @@ public class StartShootGame : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("Hey");
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
         PlayerGun.SetActive(true);
     }
 }

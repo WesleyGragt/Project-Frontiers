@@ -43,4 +43,10 @@ public class PointGiver : MonoBehaviour
     {
         Cans = new List<GameObject>(targets);
     }
+
+    public void pointsToTickets()
+    {
+        TicketSystem.tickets = totalPoints;
+        totalPoints = 0;
+    }
 }

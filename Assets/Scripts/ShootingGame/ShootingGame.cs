@@ -54,6 +54,7 @@ public class ShootingGame : MonoBehaviour
             Debug.Log("Out of bullets!");
 
             gunOnTable.GetComponent<MeshRenderer>().enabled = true;
+            gunOnTable.GetComponent<Collider>().enabled = true;
             gameObject.SetActive(false);
 
             gameStarted = false;
@@ -61,5 +62,11 @@ public class ShootingGame : MonoBehaviour
             
             gameObject.SetActive(false);
         }
+    }
+
+    public void pointsToTickets()
+    {
+        TicketSystem.tickets = shootingPoints;
+        shootingPoints = 0;
     }
 }

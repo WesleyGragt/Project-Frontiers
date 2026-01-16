@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4510950018916100949}
   - component: {fileID: 5559606671516374073}
   - component: {fileID: 2611317524578604837}
-  - component: {fileID: 8688568664973651421}
   - component: {fileID: 8984960538468922637}
+  - component: {fileID: 8688568664973651421}
+  - component: {fileID: 2981394807795289039}
   - component: {fileID: 565901605080112993}
   m_Layer: 0
   m_Name: HammerGameStart
@@ -34,8 +35,7 @@ Transform:
   m_LocalPosition: {x: -0.31700006, y: -1.0618418, z: 1.2856636}
   m_LocalScale: {x: 2.2516, y: 0.6767635, z: 2.2516}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 462846702064287652}
+  m_Children: []
   m_Father: {fileID: 4129999550981520673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4510950018916100949
@@ -112,6 +112,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8984960538468922637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376290053221130587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25605258b4a9e05439328ad41abef993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraControls: {fileID: 0}
+  cameraLockTarget: {fileID: 462846702064287652}
 --- !u!114 &8688568664973651421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,18 +141,34 @@ MonoBehaviour:
   interactEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8984960538468922637}
-        m_TargetAssemblyTypeName: CameraLock, Assembly-CSharp
-        m_MethodName: LockCamera
-        m_Mode: 1
+      - m_Target: {fileID: 2981394807795289039}
+        m_TargetAssemblyTypeName: CoinTicketSystem, Assembly-CSharp
+        m_MethodName: CheckCost
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2981394807795289039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376290053221130587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3844773aa2afff04badbec8b5c013a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variableToCheck: {fileID: 11400000, guid: fc53a1992447a1a458c5a98d50a85260, type: 2}
+  enoughCoins:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 565901605080112993}
         m_TargetAssemblyTypeName: HammerManager, Assembly-CSharp
         m_MethodName: StartGame
@@ -151,20 +181,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8984960538468922637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376290053221130587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25605258b4a9e05439328ad41abef993, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraControls: {fileID: 0}
-  cameraLockTarget: {fileID: 462846702064287652}
 --- !u!114 &565901605080112993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,12 +225,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091057507868480561}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 2.3, z: -0.629}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.2164396, y: -0, z: -0, w: 0.97629607}
+  m_LocalPosition: {x: -0.3169999, y: 0.49471414, z: -0.13059235}
+  m_LocalScale: {x: 2.2516, y: 0.95803916, z: 1.9703248}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8506105261364041215}
+  m_Father: {fileID: 8622382462621694338}
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!1 &1366057438731484542
 GameObject:
@@ -247,7 +263,7 @@ Transform:
   m_Children:
   - {fileID: 8506105261364041215}
   - {fileID: 2781859664238563400}
-  - {fileID: 3245207935712167817}
+  - {fileID: 8622382462621694338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2355995575380804293
@@ -385,7 +401,40 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!1 &5707849515273996466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8622382462621694338}
+  m_Layer: 0
+  m_Name: CamWithHammer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8622382462621694338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707849515273996466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 462846702064287652}
+  - {fileID: 3245207935712167817}
+  m_Father: {fileID: 4129999550981520673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7363941953030070980
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +468,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8592725427709742506}
-  m_Father: {fileID: 4129999550981520673}
+  m_Father: {fileID: 8622382462621694338}
   m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
 --- !u!95 &2300938154387796020
 Animator:
