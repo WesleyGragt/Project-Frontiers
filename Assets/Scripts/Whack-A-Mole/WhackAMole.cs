@@ -1,4 +1,6 @@
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WhackAMole : MonoBehaviour
 {
@@ -38,6 +40,11 @@ public class WhackAMole : MonoBehaviour
     [Header("States")]
     public bool started;
 
+    [Header("UI")]
+    public Text timeText;
+    public Text pointsText;
+
+
 
     private void Start()
     {
@@ -72,7 +79,8 @@ public class WhackAMole : MonoBehaviour
             
             //End game after some time
             curGameTime += Time.deltaTime;
-            if(curGameTime > gameTime)
+            UpdateUI();
+            if (curGameTime > gameTime)
             {
                 EndGame();
             }
@@ -110,6 +118,66 @@ public class WhackAMole : MonoBehaviour
     {
         points += pointsPerMole;
         //add ux things
+        UpdateUI();
+    }
+
+    public void PointToTickets()
+    {
+        TicketSystem.tickets = points / pointsToTicketsConversion;
+        points = 0;
+    }
+    
+
+    void UpdateUI()
+    {
+        string pointsStr = points.ToString("#");
+        if(pointsStr.Length == 2)
+        {
+            pointsStr = "0" + pointsStr;
+        }
+        else if(pointsStr.Length == 1)
+        {
+            pointsStr = "00" + pointsStr;
+        }
+
+        string timeStr = curGameTime.ToString("#");
+        if (timeStr.Length == 2)
+        {
+            timeStr = "0" + timeStr;
+        }
+        else if (timeStr.Length == 1)
+        {
+            timeStr = "00" + timeStr;
+        }
+
+        string updatedPointsString = "";
+        foreach (char character in pointsStr)
+        {
+            if (character == 1)
+            {
+                updatedPointsString += " " + character;
+            }
+            else
+            {
+                updatedPointsString += character;
+            }
+        }
+
+        string updatedTimeStr = "";
+        foreach (char character in timeStr)
+        {
+            if (character == 1)
+            {
+                updatedTimeStr += " " + character;
+            }
+            else
+            {
+                updatedTimeStr += character;
+            }
+        }
+
+        pointsText.text = updatedPointsString;
+        timeText.text = updatedTimeStr;
     }
 
 
@@ -120,8 +188,9 @@ public class WhackAMole : MonoBehaviour
         Cursor.visible = false;
         cameraLock.UnlockCamera();
 
-        //add tickets to total tickets
         //add ux things
+        pointsText.text = "";
+        timeText.text = "";
     }
 
 
@@ -138,7 +207,6 @@ public class WhackAMole : MonoBehaviour
         timeElapsedBetweenMolePopup = timeBetweenMolePopup * .8f;
         curMoleUptime = moleUptime;
         curTimeBetweenMolePopup = timeBetweenMolePopup;
-        points = 0;
 
     }
 }
