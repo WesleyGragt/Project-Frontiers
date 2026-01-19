@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class GainPoints : MonoBehaviour
 {
+    private void Start()
+    {
+        Destroy(gameObject, 5);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("DuckTarget"))

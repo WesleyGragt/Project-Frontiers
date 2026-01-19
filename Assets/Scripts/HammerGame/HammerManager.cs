@@ -63,6 +63,8 @@ public class HammerManager : MonoBehaviour
     {
         if (!gameStarted) return;
 
+        hammer.SetActive(true);
+
         if (!startTimer && Input.GetKeyDown(KeyCode.Space))
         {
             startTimer = true;
@@ -168,8 +170,8 @@ public class HammerManager : MonoBehaviour
 
         col.enabled = true;
         timerText.transform.parent.gameObject.SetActive(false);
-        hammer.SetActive(false);
         hammer.GetComponent<Animator>().enabled = false;
+        hammer.SetActive(false);
     }
 
     public void pointsToTickets()
