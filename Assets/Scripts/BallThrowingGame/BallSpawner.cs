@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
+    [SerializeField] private Animator borders;
+
     [SerializeField] private Collider buttonActive;
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] int maxBalls = 5;
@@ -21,6 +23,9 @@ public class BallSpawner : MonoBehaviour
     public void StartGame()
     {
         if (gameStarted) return;
+
+        borders.SetBool("Up", true);
+        borders.SetBool("Down", false);
 
         gameStarted = true;
         
@@ -54,6 +59,9 @@ public class BallSpawner : MonoBehaviour
         }
         else
         {
+            borders.SetBool("Up", false);
+            borders.SetBool("Down", true);
+
             resetGame = true;
             gameStarted = false;
             buttonActive.enabled = true;
