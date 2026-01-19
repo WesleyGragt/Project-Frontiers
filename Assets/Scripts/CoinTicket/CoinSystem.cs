@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CoinSystem : MonoBehaviour
 {
     [SerializeField] private IntVariable variableToCheck;
+    [SerializeField] private GameObject HideUI;
     
     [Space]
     public UnityEvent enoughCoins;
@@ -15,6 +17,11 @@ public class CoinSystem : MonoBehaviour
         {
             if (variableToCheck.value - pGameCost >= 0)
             {
+                if (HideUI != null)
+                {
+                    HideUI.SetActive(false);
+                }
+
                 variableToCheck.Decrease(pGameCost);
                 enoughCoins?.Invoke();
             } else

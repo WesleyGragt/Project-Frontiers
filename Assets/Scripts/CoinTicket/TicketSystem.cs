@@ -13,7 +13,7 @@ public class TicketSystem : MonoBehaviour
     {
         getTicket.Invoke();
 
-        Debug.Log(tickets);
+        Debug.Log($"{tickets} gained");
         variableToCheck.Increase(tickets);
     }
 }

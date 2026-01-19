@@ -1,19 +1,27 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.Rendering.UI;
+using UnityEngine.UI;
 
 public class HammerManager : MonoBehaviour
 {
     [SerializeField] private CameraLock camLock;
+    [SerializeField] private GameObject showUI;
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject hammer;
     [SerializeField] private GameObject ball;
     [Space]
     [SerializeField] private float heightToWin = 25f;
-    [SerializeField] private float timeTillSmash = 5;
+    [SerializeField] private int timeTillSmash = 5;
     [Space]
     [SerializeField] private float powerPerTap = 1f;
     [SerializeField] private float powerLossPerSec = 2f;
 
-    Rigidbody ballRB;
+    private Rigidbody ballRB;
+
+    private Collider col;
 
     private bool gameStarted = false;
     private bool startTimer = false;
@@ -26,31 +34,33 @@ public class HammerManager : MonoBehaviour
     private int currentPoints = 0;
     [SerializeField] private int pointsGain = 100;
 
-    private float startBallHeight = 0f;
+    private bool smashedBall = false;
+
     private float maxBallHeight = 0f;
 
     private void Start()
     {
+        col = gameObject.GetComponent<Collider>();
         ballRB = ball.GetComponent<Rigidbody>();
-
-        startBallHeight = ball.transform.position.y;
     }
 
     public void StartGame()
     {
-        Debug.Log(gameStarted);
-
         if (gameStarted) return;
+
+        col.enabled = false;
+        timerText.transform.parent.gameObject.SetActive(true);
+        timerText.text = $"{timeTillSmash}:00";
 
         camLock.LockCamera();
         hammer.SetActive(true);
         hammer.GetComponent<Animator>().enabled = false;
+
         gameStarted = true;
     }
 
     private void Update()
     {
-
         if (!gameStarted) return;
 
         if (!startTimer && Input.GetKeyDown(KeyCode.Space))
@@ -67,15 +77,34 @@ public class HammerManager : MonoBehaviour
         {
             powerUp();
         }
-     
+
         if (Time.time > timeOfStart + timeTillSmash)
         {
-            ballRB.AddForce(Vector3.up * currentPower, ForceMode.Impulse);
+            if (!smashedBall)
+            {
+                ballRB.AddForce(Vector3.up * currentPower, ForceMode.Impulse);
+                
+                hammer.GetComponent<Animator>().enabled = true;
 
-            hammer.GetComponent<Animator>().enabled = true;
+                camLock.UnlockCamera();
+                
+                smashedBall = true;
+                
+                if (showUI != null)
+                {
+                    showUI.SetActive(true);
+                }
+                
+                timerText.text = "0:00";
+            }
 
-            camLock.UnlockCamera();
             BallHeight();
+        }
+        else
+        {
+            int secText = Mathf.FloorToInt(timeOfStart + timeTillSmash - Time.time);
+            int miliSecText = Mathf.FloorToInt((timeOfStart + timeTillSmash - Time.time - secText) * 100);
+            timerText.text = $"{secText}:{miliSecText}";
         }
 
     }
@@ -91,12 +120,14 @@ public class HammerManager : MonoBehaviour
         curTime = Time.time;
 
         if (currentPower < 0) currentPower = 0;
-        
+
         Debug.Log(currentPower);
     }
 
     private void BallHeight()
     {
+        if (currentPower == 0) resetGame();
+
         if (ball.transform.position.y > maxBallHeight)
         {
             maxBallHeight = ball.transform.position.y;
@@ -112,32 +143,33 @@ public class HammerManager : MonoBehaviour
 
     private void CheckHeight()
     {
-        if (currentPower == 0)
-        {
-            maxBallHeight = 0;
-            startTimer = false;
-            gameStarted = false;
-        }
-        else if (maxBallHeight > heightToWin)
+        if (maxBallHeight > heightToWin)
         {
             currentPoints += pointsGain;
             Debug.Log($"Reached required height, gained {pointsGain} points. New total: {currentPoints}");
 
-
-            currentPower = 0;
-            maxBallHeight = 0;
-            startTimer = false;
-            gameStarted = false;
+            resetGame();
         }
         else if (ball.transform.position.y < maxBallHeight)
         {
             Debug.Log("Failed to reach Height");
 
-            currentPower = 0;
-            maxBallHeight = 0;
-            startTimer = false;
-            gameStarted = false;
+            resetGame();
         }
+    }
+
+    private void resetGame()
+    {
+        currentPower = 0;
+        maxBallHeight = 0;
+        startTimer = false;
+        gameStarted = false;
+        smashedBall = false;
+
+        col.enabled = true;
+        timerText.transform.parent.gameObject.SetActive(false);
+        hammer.SetActive(false);
+        hammer.GetComponent<Animator>().enabled = false;
     }
 
     public void pointsToTickets()

@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Throw : MonoBehaviour
 {
     public static Throw HoldPoint;
+    [SerializeField] GameObject sliderUI;
 
     public bool pickup = false;
-
-    private float chargeTime = 0f;
     [Space]
     [SerializeField] float maxChargeTime = 1000f;
+    
+    private float chargeTime = 0f;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class Throw : MonoBehaviour
     private void Update()
     {
         if (PickUp.curBall == null) return;
+        
 
         ChargeShot();
         ThrowBall();
@@ -32,6 +35,10 @@ public class Throw : MonoBehaviour
                 chargeTime += 5f;
             }
         }
+
+        sliderUI.SetActive(true);
+        sliderUI.GetComponent<Slider>().maxValue = maxChargeTime;
+        sliderUI.GetComponent<Slider>().value = chargeTime;
     }
 
     private void ThrowBall()
@@ -55,6 +62,7 @@ public class Throw : MonoBehaviour
                 pickup = false;
 
                 chargeTime = 0f;
+                sliderUI.SetActive(false);
             }
             else
             {

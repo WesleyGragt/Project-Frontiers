@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ResetGame : MonoBehaviour
 {
+    [SerializeField] private GameObject showUI;
+    
     private List<Vector3> targetRot = new List<Vector3>();
     private List<Vector3> targetPos = new List<Vector3>();
 
@@ -16,6 +18,11 @@ public class ResetGame : MonoBehaviour
         if (BallSpawner.resetGame)
         {
             Debug.Log("Resetting BallGame");
+
+            if (showUI != null)
+            {
+                showUI.SetActive(true);
+            }
 
             BallSpawner.resetGame = false;
             BallSpawner.ballSpawning = true;

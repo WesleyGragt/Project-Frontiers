@@ -1,20 +1,32 @@
+using TMPro;
 using UnityEngine;
 
 public class ShootingGame : MonoBehaviour
 {
     [SerializeField] Transform camera;
+    [SerializeField] GameObject showUI;
+    [SerializeField] TextMeshProUGUI bulletAmountText;
+    [SerializeField] TextMeshProUGUI pointAmountText;
     [Space]
     [SerializeField] GameObject gunOnTable;
     [SerializeField] GameObject bullet;
 
     [SerializeField] private int maxBullets = 6;
 
-    private int curBullets;
+    [HideInInspector]
+    public int curBullets;
 
     private bool gameStarted = false;
 
     public static int pointsPerHit = 10;
     public static int shootingPoints = 0;
+
+    private GameObject canvas;
+
+    private void Start()
+    {
+        canvas = bulletAmountText.transform.parent.transform.parent.gameObject;
+    }
 
     private void Update()
     {
@@ -23,6 +35,7 @@ public class ShootingGame : MonoBehaviour
             curBullets = maxBullets;
             gameStarted = true;
 
+            canvas.SetActive(true);
             PlayerMovement.ableToMove = false;
         }
 
@@ -41,17 +54,21 @@ public class ShootingGame : MonoBehaviour
 
     private void Shooting()
     {
+        pointAmountText.text = $"{shootingPoints}";
+
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
         {
             GameObject instance = Instantiate(bullet, transform.position, transform.rotation);
             instance.GetComponent<Rigidbody>().AddForce(transform.forward * 3000f);
 
             curBullets--;
+            bulletAmountText.text = $"{curBullets}";
         }
 
         if (curBullets == 0)
         {
             Debug.Log("Out of bullets!");
+
 
             gunOnTable.GetComponent<MeshRenderer>().enabled = true;
             gunOnTable.GetComponent<Collider>().enabled = true;
@@ -60,6 +77,12 @@ public class ShootingGame : MonoBehaviour
             gameStarted = false;
             PlayerMovement.ableToMove = true;
             
+            if (showUI != null)
+            {
+                showUI.SetActive(true);
+            }
+
+            canvas.SetActive(false);
             gameObject.SetActive(false);
         }
     }
