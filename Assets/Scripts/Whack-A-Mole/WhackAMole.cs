@@ -7,6 +7,8 @@ public class WhackAMole : MonoBehaviour
     [Header("Components")]
     public Mole[] moles;
     public CameraLock cameraLock;
+    public IntVariable coins;
+    public GameObject uiHide;
 
     [Header("Settings")]
     public float gameTime;
@@ -78,9 +80,9 @@ public class WhackAMole : MonoBehaviour
             
             
             //End game after some time
-            curGameTime += Time.deltaTime;
+            curGameTime -= Time.deltaTime;
             UpdateUI();
-            if (curGameTime > gameTime)
+            if (curGameTime < 0)
             {
                 EndGame();
             }
@@ -89,9 +91,12 @@ public class WhackAMole : MonoBehaviour
 
     public void StartGame()
     {
-        if(!started)
+        if(!started && coins.value >= 1)
         {
             started = true;
+            coins.Decrease();
+            cameraLock.LockCamera();
+            uiHide.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -121,6 +126,14 @@ public class WhackAMole : MonoBehaviour
         UpdateUI();
     }
 
+    public void LosePoints()
+    {
+        points -= pointsPerMole;
+        //add ux things
+        UpdateUI();
+    }
+
+
     public void PointToTickets()
     {
         TicketSystem.tickets = points / pointsToTicketsConversion;
@@ -131,13 +144,20 @@ public class WhackAMole : MonoBehaviour
     void UpdateUI()
     {
         string pointsStr = points.ToString("#");
-        if(pointsStr.Length == 2)
+        if(points == 0)
         {
-            pointsStr = "0" + pointsStr;
+            pointsStr = "000";
         }
-        else if(pointsStr.Length == 1)
+        else
         {
-            pointsStr = "00" + pointsStr;
+            if (pointsStr.Length == 2)
+            {
+                pointsStr = "0" + pointsStr;
+            }
+            else if (pointsStr.Length == 1)
+            {
+                pointsStr = "00" + pointsStr;
+            }
         }
 
         string timeStr = curGameTime.ToString("#");
@@ -153,7 +173,7 @@ public class WhackAMole : MonoBehaviour
         string updatedPointsString = "";
         foreach (char character in pointsStr)
         {
-            if (character == 1)
+            if (character == '1')
             {
                 updatedPointsString += " " + character;
             }
@@ -166,7 +186,7 @@ public class WhackAMole : MonoBehaviour
         string updatedTimeStr = "";
         foreach (char character in timeStr)
         {
-            if (character == 1)
+            if (character == '1')
             {
                 updatedTimeStr += " " + character;
             }
@@ -187,10 +207,9 @@ public class WhackAMole : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cameraLock.UnlockCamera();
+        uiHide.SetActive(true);
 
         //add ux things
-        pointsText.text = "";
-        timeText.text = "";
     }
 
 
@@ -202,11 +221,13 @@ public class WhackAMole : MonoBehaviour
         }
         started = false;
         moleCount = 1;
-        curGameTime = 0;
+        curGameTime = gameTime;
         timeSinceMoleCountIncrease = 0;
         timeElapsedBetweenMolePopup = timeBetweenMolePopup * .8f;
         curMoleUptime = moleUptime;
         curTimeBetweenMolePopup = timeBetweenMolePopup;
+        pointsText.text = "";
+        timeText.text = "";
 
     }
 }

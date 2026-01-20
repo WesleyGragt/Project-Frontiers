@@ -182,6 +182,8 @@ MonoBehaviour:
   - {fileID: 5406898062014251440}
   - {fileID: 2716661106246332214}
   cameraLock: {fileID: 1582973395538887094}
+  coins: {fileID: 11400000, guid: fc53a1992447a1a458c5a98d50a85260, type: 2}
+  uiHide: {fileID: 0}
   gameTime: 60
   curGameTime: 0
   timeBetweenMolePopup: 3
