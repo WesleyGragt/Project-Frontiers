@@ -303,6 +303,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2217470821660885386, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_fontSize
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217470821660885386, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918419303865492421, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918419303865492421, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918419303865492421, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312712557634590068, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194532361733434351, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395924958779934980, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_fontSize
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395924958779934980, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8794180416858293459, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
       propertyPath: m_Name
       value: Player
@@ -315,6 +351,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 342568891}
   m_SourcePrefab: {fileID: 100100000, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+--- !u!1 &1341907798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1391706032301788104, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
+  m_PrefabInstance: {fileID: 1341907797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1453682735
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +747,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 730261407468657602, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 730261407468657602, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6788823231504714915}
+    - target: {fileID: 730261407468657602, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 730261407468657602, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WhackAMole, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347394157693983293, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347394157693983293, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1582973395538887094, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
       propertyPath: cameraControls
       value: 
@@ -754,11 +819,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Whack-A-Mole
       objectReference: {fileID: 0}
+    - target: {fileID: 4747194319150442404, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: m_Text
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5829773630351577921, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: uiHide
+      value: 
+      objectReference: {fileID: 1341907798}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+--- !u!114 &6788823231504714915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5829773630351577921, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+  m_PrefabInstance: {fileID: 6788823231504714914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01abbb9a830333146bf10f660b794198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

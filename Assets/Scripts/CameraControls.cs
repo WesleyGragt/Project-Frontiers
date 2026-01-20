@@ -65,7 +65,7 @@ public class CameraControls : MonoBehaviour
         mousePos.z = 10f;
         mousePos = camera.ScreenToWorldPoint(mousePos);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

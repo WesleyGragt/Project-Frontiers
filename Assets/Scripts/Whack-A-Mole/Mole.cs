@@ -7,18 +7,31 @@ public class Mole : MonoBehaviour
     public Transform topLocation;
     public Transform bottomLocation;
     public LerpTo lerp;
+    public GameObject bomb;
+    [Range(0f,1f)]
+    public float bombChance;
     [Header("States")]
     public bool isUp;
+    public bool hasBomb = false;
 
     public void Whack()
     {
         if (isUp)
         {
-            whackAMole.GainPoints();
+            if (hasBomb)
+            {
+                whackAMole.LosePoints();
+                bomb.SetActive(false);
+                //add ux things
+            }
+            else
+            {
+                whackAMole.GainPoints();
+                //add ux things
+            }
             Reset();
             StopCoroutine(ResetAfterTime(0));
 
-            //add ux things
         }
     }
 
@@ -33,7 +46,19 @@ public class Mole : MonoBehaviour
         if (!isUp)
         {
             isUp = true;
-            lerp.target = topLocation;
+
+            if(Random.Range(0f, 1f) < bombChance)
+            {
+                hasBomb = true;
+                bomb.SetActive(true);
+            }
+            else
+            {
+                hasBomb = false;
+                bomb.SetActive(false);
+            }
+
+                lerp.target = topLocation;
             StartCoroutine(ResetAfterTime(time));
         }
     }
