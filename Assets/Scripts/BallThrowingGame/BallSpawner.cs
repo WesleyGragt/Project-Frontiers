@@ -10,7 +10,7 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] int maxBalls = 5;
 
-    private List<GameObject> spawnedBalls = new List<GameObject>();
+    public static List<GameObject> spawnedBalls = new List<GameObject>();
 
     private float timer = 0;
     private float timerStart = 0f;
@@ -59,13 +59,18 @@ public class BallSpawner : MonoBehaviour
         }
         else
         {
-            borders.SetBool("Up", false);
-            borders.SetBool("Down", true);
-
-            resetGame = true;
-            gameStarted = false;
-            buttonActive.enabled = true;
+            ResetGame();
         }
+    }
+
+    public void ResetGame()
+    {
+        borders.SetBool("Up", false);
+        borders.SetBool("Down", true);
+
+        resetGame = true;
+        gameStarted = false;
+        buttonActive.enabled = true;
     }
 
     private void SpawnBalls()
