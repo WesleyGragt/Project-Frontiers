@@ -4,6 +4,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PointGiver : MonoBehaviour
 {
+    [SerializeField] BallSpawner ballSpawner;
+    [Space]
     [SerializeField] List<GameObject> Cans = new List<GameObject>();
     public static List<GameObject> targets = new List<GameObject>();
 
@@ -25,6 +27,12 @@ public class PointGiver : MonoBehaviour
 
     private void GivePoints(int points)
     {
+        if (Cans.Count == 0)
+        {
+            ballSpawner.ResetGame();
+            Debug.Log("resetting game");
+        }
+
         for (int i = Cans.Count - 1; i >= 0; i--)
         {
             var target = Cans[i];

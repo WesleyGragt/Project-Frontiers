@@ -29,10 +29,22 @@ public class ResetGame : MonoBehaviour
 
             gameObject.GetComponent<PointGiver>().ResetCansList();
 
+            foreach (var ball in BallSpawner.spawnedBalls)
+            {
+                BallSpawner.spawnedBalls.Remove(ball);
+                Destroy(ball, 5);
+            }
+
             for (int i = PointGiver.targets.Count - 1; i >= 0; i--)
             {
+                PointGiver.targets[i].GetComponent<Rigidbody>().isKinematic = true;
                 PointGiver.targets[i].transform.eulerAngles = targetRot[i];
                 PointGiver.targets[i].transform.position = targetPos[i];
+            }
+
+            for (int i = PointGiver.targets.Count - 1; i >= 0; i--)
+            {
+                PointGiver.targets[i].GetComponent<Rigidbody>().isKinematic = false;
             }
         }
     }
