@@ -9,6 +9,7 @@ public class WhackAMole : MonoBehaviour
     public CameraLock cameraLock;
     public IntVariable coins;
     public GameObject uiHide;
+    public MoleHammer hammer;
 
     [Header("Settings")]
     public float gameTime;
@@ -38,6 +39,7 @@ public class WhackAMole : MonoBehaviour
 
     [Header("Results")]
     public int points;
+    public int amountedPoints;
 
     [Header("States")]
     public bool started;
@@ -95,6 +97,7 @@ public class WhackAMole : MonoBehaviour
         {
             started = true;
             coins.Decrease();
+            hammer.SetIdle();
             cameraLock.LockCamera();
             uiHide.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
@@ -201,6 +204,13 @@ public class WhackAMole : MonoBehaviour
     }
 
 
+    public void SetHammerWhack(Vector3 whackPos)
+    {
+        hammer.moleWhackHammerPos.position = whackPos + hammer.moleHammerOffset;
+        hammer.SetWhack();
+    }
+
+
     public void EndGame()
     {
         ResetGame();
@@ -208,6 +218,7 @@ public class WhackAMole : MonoBehaviour
         Cursor.visible = false;
         cameraLock.UnlockCamera();
         uiHide.SetActive(true);
+        hammer.PutDown();
 
         //add ux things
     }

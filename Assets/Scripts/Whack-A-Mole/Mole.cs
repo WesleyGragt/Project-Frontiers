@@ -29,8 +29,10 @@ public class Mole : MonoBehaviour
                 whackAMole.GainPoints();
                 //add ux things
             }
-            Reset();
+            whackAMole.SetHammerWhack(transform.position);
+            isUp = false;
             StopCoroutine(ResetAfterTime(0));
+            StartCoroutine(ResetAfterTime(0.1f));
 
         }
     }
