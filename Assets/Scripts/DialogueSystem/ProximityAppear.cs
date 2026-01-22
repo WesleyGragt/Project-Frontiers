@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -7,6 +6,10 @@ public class ProximityAppear : MonoBehaviour
 {
     [SerializeField] List<GameObject> npcs = new List<GameObject>();
     [SerializeField] GameObject player;
+
+    [Space]
+    [SerializeField] float minDistance;
+    [SerializeField] float maxDistance;
 
     private void Update()
     {
@@ -25,14 +28,13 @@ public class ProximityAppear : MonoBehaviour
 
             float distance = Mathf.Sqrt((xDif * xDif) + (zDif * zDif));
             
-            switch(distance)
+            if (distance < minDistance)
             {
-                case < 5:
-                    npc.SetActive(true);
-                    break;
-                case > 5:
-                    npc.SetActive(false);
-                    break;
+                npc.SetActive(true);
+            }
+            else if (distance > maxDistance)
+            {
+                npc.SetActive(false);
             }
         }
     }

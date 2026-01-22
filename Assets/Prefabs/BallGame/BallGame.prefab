@@ -263,7 +263,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865115283667371984}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -826,7 +826,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3097671713487158758}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1291,7 +1291,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4658535042907915812}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1803,7 +1803,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6405985995896552021}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2334,7 +2334,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8505631961447333304}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2471,7 +2471,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8518527464705479221}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2977,6 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6373a00bca0679344b332208051d9455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballSpawner: {fileID: 1609567343861689798}
   Cans:
   - {fileID: 1865115283667371984}
   - {fileID: 3097671713487158758}

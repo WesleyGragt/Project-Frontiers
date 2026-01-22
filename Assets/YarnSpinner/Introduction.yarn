@@ -1,50 +1,80 @@
 ﻿title: BallThrow
 ---
-NPC: Howdy!! How can I help you?
--> How do I play this game?
-    NPC: You put in a coin and some balls will appear.
-    NPC: Next you will have to click to grab the ball.
-    NPC: Then you will have to hold click and release to throw the ball.
-    NPC: You can see the amount of power you have charged up on the side of your screen!
-    NPC: Have fun!!!!
--> Fuck off you creepy clown!!
-    NPC: Rude. ;-;
+Clown: You like balls?
+-> Ofcourse! I love them!
+    Clown: Well, you are in LUCK!!!
+    Clown: In this game your goal is to throw THE balls against those cans over there!
+    Clown: Take some time charging that throw beforehand!
+    Clown: When you knock the cans over YOU GET POINTS!!!
+    Clown: WOOOOOOOOO!!
+-> No, I hate them!
+    Clown: Shame.
 ===
 
 title: Shooter
 ---
-NPC: Howdy!! How can I help you?
--> How do I play this game?
-    NPC: You put a coin in and grab the gun. After that click to shoot.
-    NPC: Whatch out though since you only have a few bullets to hit the ducks with.
-    NPC: You can see your bullets and points in the corner of your screen!
-    NPC: Have fun!!!
--> Fuck off you creepy clown!!
-    NPC: Rude. ;-;
+Clown: Wanna shoot someone?
+-> YES PLEASE!
+    Clown: Well, go grab that GUN over there!
+    Clown: And start BLASTING!!!
+    Clown: You will only have LIMITED bullets PER round.
+    Clown: Which is a shame, tbh.
+    Clown: Oh, I almost forgot. You can NOT try and shoot other people.
+    Clown: We got a lot of complaints last year about that.
+-> No...
+    Clown: Americans wouldve said yes...
 ===
 
 title: HammerGame
 ---
-NPC: Howdy!! How can I help you?
--> How do I play this game?
-    NPC: You put in a coin and gain power by SMASHING that spacebar as much as you can in a limited amount of time. 
-    NPC: Have fun!!!
--> Fuck off you creepy clown!!
-    NPC: Rude. ;-;
+Clown: You like to smash?
+-> I mean... I could try?
+    Clown: Well, just grab the hammer over there!
+    Clown: And SMASH this weird thing called a "Space Bar?" a bunch of times.
+    Clown: Although I don't know how they earn anything since it's literally in space. But oh well.
+    Clown: Be sure to do it AS FAST as possible!
+    Clown: We have got to reach this bar somehow.
+-> Get away you weirdo...
+    Clown: Well I'M sorry.
 ===
 
 title: WhackAMole
 ---
-NPC: Howdy!! How can I help you?
--> How do I play this game?
-    NPC: You put in a coin and click on all the moles as soon as they come out of their puny holes. 
-    NPC: Have fun!!!
--> Fuck off you creepy clown!!
-    NPC: Rude. ;-;
+Clown: It's time to whack A mole!!!
+Player: Weird way to say that, but...
+->  Sure?
+    Clown: Get back that ENTHUSIASM!!
+    Clown: This is a FUNfair after all!
+    Clown: In this game you gotta WHACK. THOSE. MOLES!
+    Clown: However, they are fighting back somehow...[]+
+
+    Clown: Just make sure not to whack the bombs.
+    Clown: Don't ask me how they got them. I don't know either…
+-> Not if you say it like that...
+    Clown: You are no fun.
 ===
 
 title: UnFinished
 ---
-NPC: Howdy!! Sorry but you cant play this game yet.
-NPC: Since its not finished at all!
+Clown: You want to play this game?
+Clown: Well TOO BAD!
+Clown: Now scram.
+===
+
+title: StoreEnoughTickets
+---
+Clown: What prize do you want?
+Player: That one!
+Clown: Alright! Here ya go.
+===
+
+title: StoreNotEnoughTickets
+---
+Clown: What prize do you want?
+Player: That one!
+Clown: Are you trying to get a prize without having enough tickets?
+-> Yes...
+    Clown: Try playing some more games untill you have enough.
+-> No...
+    Clown: Get out of here.
 ===

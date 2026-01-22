@@ -9,6 +9,7 @@ public class CoinSystem : MonoBehaviour
     
     [Space]
     public UnityEvent enoughCoins;
+    public UnityEvent notEnoughCoins;
 
 
     private void CheckAmount(IntVariable pIntVariable, int pGameCost)
@@ -26,6 +27,7 @@ public class CoinSystem : MonoBehaviour
                 enoughCoins?.Invoke();
             } else
             {
+                notEnoughCoins?.Invoke();
                 Debug.Log("Not enough coins!");
             }
         }
