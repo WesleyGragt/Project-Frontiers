@@ -5,8 +5,8 @@ public class ShootingGame : MonoBehaviour
 {
     [SerializeField] Transform camera;
     [SerializeField] GameObject showUI;
-    [SerializeField] TextMeshProUGUI bulletAmountText;
-    [SerializeField] TextMeshProUGUI pointAmountText;
+    [SerializeField] TextMeshProUGUI bulletText;
+    [SerializeField] TextMeshProUGUI pointText;
     [Space]
     [SerializeField] GameObject gunOnTable;
     [SerializeField] GameObject bullet;
@@ -22,10 +22,14 @@ public class ShootingGame : MonoBehaviour
     public static int shootingPoints = 0;
 
     private GameObject canvas;
+    private string startBulletText;
+    private string startPointText;
 
     private void Start()
     {
-        canvas = bulletAmountText.transform.parent.transform.parent.gameObject;
+        canvas = bulletText.transform.parent.gameObject;
+        startBulletText = bulletText.text;
+        startPointText = pointText.text;
     }
 
     private void Update()
@@ -40,6 +44,8 @@ public class ShootingGame : MonoBehaviour
         }
 
         AimAtCameraPos();
+
+        if (lookingAtNpc()) return;
         Shooting();
     }
 
@@ -52,25 +58,35 @@ public class ShootingGame : MonoBehaviour
         transform.LookAt(hitInfo.point);
     }
 
+    private bool lookingAtNpc()
+    {
+        Ray ray = new Ray(camera.position, camera.forward);
+        Physics.Raycast(ray, out RaycastHit hitInfo);
+
+        if (hitInfo.transform.parent.name == "NPCS") return true;
+
+        return false;
+    }
+
     private void Shooting()
     {
-        pointAmountText.text = $"{shootingPoints}";
-
+        pointText.text = $"{startPointText} {shootingPoints}";
+        bulletText.text = $"{startBulletText} {curBullets}";
+        
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
         {
             GameObject instance = Instantiate(bullet, transform.position, transform.rotation);
             instance.GetComponent<Rigidbody>().AddForce(transform.forward * 3000f);
 
             curBullets--;
-            bulletAmountText.text = $"{curBullets}";
         }
 
         if (curBullets == 0)
         {
             Debug.Log("Out of bullets!");
 
+            gunOnTable.gameObject.SetActive(true);
 
-            gunOnTable.GetComponent<MeshRenderer>().enabled = true;
             gunOnTable.GetComponent<Collider>().enabled = true;
             gameObject.SetActive(false);
 
@@ -81,6 +97,8 @@ public class ShootingGame : MonoBehaviour
             {
                 showUI.SetActive(true);
             }
+
+            curBullets = maxBullets;
 
             canvas.SetActive(false);
             gameObject.SetActive(false);

@@ -29,8 +29,10 @@ public class PointGiver : MonoBehaviour
     {
         if (Cans.Count == 0)
         {
-            ballSpawner.ResetGame();
-            Debug.Log("resetting game");
+            foreach (var ball in BallSpawner.spawnedBalls)
+            {
+                ball.GetComponent<PickUp>().Thrown = true;
+            }
         }
 
         for (int i = Cans.Count - 1; i >= 0; i--)

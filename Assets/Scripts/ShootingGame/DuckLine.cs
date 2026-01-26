@@ -75,7 +75,7 @@ public class DuckLine : MonoBehaviour
     {
         float firstDuckX = ducks[0].transform.localPosition.x;
 
-        if (direction == Direction.ToTheRight && firstDuckX > transform.lossyScale.x)
+        if (direction == Direction.ToTheRight && firstDuckX > transform.localPosition.x + gameObject.transform.localScale.x)
         {
             Destroy(ducks[0]);
             ducks.RemoveAt(0);
