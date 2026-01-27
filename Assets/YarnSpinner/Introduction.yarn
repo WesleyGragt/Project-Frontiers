@@ -1,80 +1,81 @@
 ﻿title: BallThrow
 ---
-Clown: You like balls?
+Sparkles: You like balls?
 -> Ofcourse! I love them!
-    Clown: Well, you are in LUCK!!!
-    Clown: In this game your goal is to throw THE balls against those cans over there!
-    Clown: Take some time charging that throw beforehand!
-    Clown: When you knock the cans over YOU GET POINTS!!!
-    Clown: WOOOOOOOOO!!
+    Sparkles: Well, you are in LUCK!!!
+    Sparkles: In this game your goal is to throw THE balls against those cans over there!
+    Sparkles: Take some time charging that throw beforehand!
+    Sparkles: When you knock the cans over YOU GET POINTS!!!
+    Sparkles: WOOOOOOOOO!!
 -> No, I hate them!
-    Clown: Shame.
+    Sparkles: Shame.
 ===
 
 title: Shooter
 ---
-Clown: Wanna shoot someone?
+Sparkles: Wanna shoot someone?
 -> YES PLEASE!
-    Clown: Well, go grab that GUN over there!
-    Clown: And start BLASTING!!!
-    Clown: You will only have LIMITED bullets PER round.
-    Clown: Which is a shame, tbh.
-    Clown: Oh, I almost forgot. You can NOT try and shoot other people.
-    Clown: We got a lot of complaints last year about that.
+    Sparkles: Well, go grab that GUN over there!
+    Sparkles: And start BLASTING!!!
+    Sparkles: You will only have LIMITED bullets PER round.
+    Sparkles: Which is a shame, tbh.
+    Sparkles: Oh, I almost forgot. You can NOT try and shoot other people.
+    Sparkles: We got a lot of complaints last year about that.
 -> No...
-    Clown: Americans wouldve said yes...
+    Sparkles: Americans wouldve said yes...
 ===
 
 title: HammerGame
 ---
-Clown: You like to smash?
+Sparkles: You like to smash?
 -> I mean... I could try?
-    Clown: Well, just grab the hammer over there!
-    Clown: And SMASH this weird thing called a "Space Bar?" a bunch of times.
-    Clown: Although I don't know how they earn anything since it's literally in space. But oh well.
-    Clown: Be sure to do it AS FAST as possible!
-    Clown: We have got to reach this bar somehow.
+    Sparkles: Well, just grab the hammer over there!
+    Sparkles: And SMASH this weird thing called a "Space Bar?" a bunch of times.
+    Sparkles: Although I don't know how they earn anything since it's literally in space. But oh well.
+    Sparkles: Be sure to do it AS FAST as possible!
+    Sparkles: We have got to reach this bar somehow.
 -> Get away you weirdo...
-    Clown: Well I'M sorry.
+    Sparkles: Well I'M sorry.
 ===
 
 title: WhackAMole
 ---
-Clown: It's time to whack A mole!!!
+Sparkles: It's time to whack A mole!!!
 Player: Weird way to say that, but...
 ->  Sure?
-    Clown: Get back that ENTHUSIASM!!
-    Clown: This is a FUNfair after all!
-    Clown: In this game you gotta WHACK. THOSE. MOLES!
-    Clown: However, they are fighting back somehow...[]+
-
-    Clown: Just make sure not to whack the bombs.
-    Clown: Don't ask me how they got them. I don't know either…
+    Sparkles: Get back that ENTHUSIASM!!
+    Sparkles: This is a FUNfair after all!
+    Sparkles: In this game you gotta WHACK. THOSE. MOLES!
+    Sparkles: However, they are fighting back somehow...[]+
+    Sparkles: Just make sure not to whack the bombs.
+    Sparkles: Don't ask me how they got them. I don't know either…
 -> Not if you say it like that...
-    Clown: You are no fun.
+    Sparkles: You are no fun.
 ===
 
-title: UnFinished
+title: Hidden
 ---
-Clown: You want to play this game?
-Clown: Well TOO BAD!
-Clown: Now scram.
+Sprinkle: Oh, you found me!
+Sprinkle: Could you not tell Sparkles about this place?
+Sprinkle: Sometimes her games get a little… intense.
 ===
 
 title: StoreEnoughTickets
 ---
-Clown: What prize do you want?
+Sprinkle: What prize do you want?
 Player: That one!
-Clown: Alright! Here ya go.
+Sprinkle: Alright! Here ya go.
 ===
 
 title: StoreNotEnoughTickets
 ---
-Clown: What prize do you want?
+Sprinkle: What prize do you want?
 Player: That one!
-Clown: Are you trying to get a prize without having enough tickets?
--> Yes...
-    Clown: Try playing some more games untill you have enough.
--> No...
-    Clown: Get out of here.
+Sprinkle: You don't have enough tickets for that!
+-> How do I get tickets?
+    Sprinkle: Play more games!
+    Sprinkle: How else do you think you're gonna get any of these FUN prizes!
+    Sprinkle: And don't forget to YANK those tickets out of the machine when you're done!
+-> Gosh darn it...
+    Sprinkle: Maybe next time!
 ===

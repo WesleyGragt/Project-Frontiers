@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6c368c6292bc34c80757c371b7c4ba, type: 3}
   m_Name: Tickets
   m_EditorClassIdentifier: 
-  value: 899
+  value: 14

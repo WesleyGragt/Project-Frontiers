@@ -18,7 +18,7 @@ public class ShootingGame : MonoBehaviour
 
     private bool gameStarted = false;
 
-    public static int pointsPerHit = 10;
+    public static int pointsPerHit = 1;
     public static int shootingPoints = 0;
 
     private GameObject canvas;
