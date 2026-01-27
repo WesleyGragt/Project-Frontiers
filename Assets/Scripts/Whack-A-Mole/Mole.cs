@@ -6,10 +6,23 @@ public class Mole : MonoBehaviour
     public WhackAMole whackAMole;
     public Transform topLocation;
     public Transform bottomLocation;
+    public float digHitDelay;
+    public float digBoomDelay;
     public LerpTo lerp;
     public GameObject bomb;
     [Range(0f,1f)]
     public float bombChance;
+    [Header("UX")]
+    public GameObject hitParticle;
+    public Transform hitParticleLoc;
+    [Space(10)]
+    public GameObject explosionParticle;
+    public Transform explosionParticleLoc;
+    [Space(20)]
+    public GameObject hitSound;
+    public GameObject explosionSound;
+    [Space(20)]
+    public Animator animator;
     [Header("States")]
     public bool isUp;
     public bool hasBomb = false;
@@ -18,21 +31,27 @@ public class Mole : MonoBehaviour
     {
         if (isUp)
         {
+            StopAllCoroutines();
             if (hasBomb)
             {
                 whackAMole.LosePoints();
                 bomb.SetActive(false);
-                //add ux things
+
+                //ux
+                Instantiate(explosionParticle, explosionParticleLoc.position, Quaternion.identity);
+                StartCoroutine(ResetAfterTime(digBoomDelay));
             }
             else
             {
                 whackAMole.GainPoints();
-                //add ux things
+
+                //ux
+                Instantiate(hitParticle, hitParticleLoc.position, Quaternion.identity);
+                animator.SetTrigger("Hit");
+                StartCoroutine(ResetAfterTime(digHitDelay));
             }
             whackAMole.SetHammerWhack(transform.position);
             isUp = false;
-            StopCoroutine(ResetAfterTime(0));
-            StartCoroutine(ResetAfterTime(0.1f));
 
         }
     }

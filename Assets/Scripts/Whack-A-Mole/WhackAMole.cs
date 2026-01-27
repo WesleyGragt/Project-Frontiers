@@ -139,7 +139,7 @@ public class WhackAMole : MonoBehaviour
 
     public void PointToTickets()
     {
-        TicketSystem.tickets = points / pointsToTicketsConversion;
+        TicketSystem.tickets = amountedPoints / pointsToTicketsConversion;
         points = 0;
     }
     
@@ -231,6 +231,11 @@ public class WhackAMole : MonoBehaviour
             moles[i].Reset();
         }
         started = false;
+        if (points > 0)
+        {
+            amountedPoints += points;
+        }
+        points = 0;
         moleCount = 1;
         curGameTime = gameTime;
         timeSinceMoleCountIncrease = 0;
