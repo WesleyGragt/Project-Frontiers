@@ -1,15 +1,17 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootingGame : MonoBehaviour
 {
     [SerializeField] Transform camera;
     [SerializeField] GameObject showUI;
     [SerializeField] TextMeshProUGUI bulletText;
-    [SerializeField] TextMeshProUGUI pointText;
+    [SerializeField] Text pointText;
     [Space]
     [SerializeField] GameObject gunOnTable;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject shotEffect;
 
     [SerializeField] private int maxBullets = 6;
 
@@ -75,6 +77,10 @@ public class ShootingGame : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
         {
+            Vector3 smokePos = transform.position + transform.forward * 0.5f;
+            GameObject gunEffect = Instantiate(shotEffect, smokePos, transform.rotation);
+            gunEffect.transform.localScale *= 0.5f;
+
             GameObject instance = Instantiate(bullet, transform.position, transform.rotation);
             instance.GetComponent<Rigidbody>().AddForce(transform.forward * 3000f);
 

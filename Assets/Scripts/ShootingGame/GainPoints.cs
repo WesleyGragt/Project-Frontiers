@@ -19,6 +19,7 @@ public class GainPoints : MonoBehaviour
             Debug.Log("Duck hit! Points: " + ShootingGame.shootingPoints);
         }
 
+        gameObject.GetComponent<InstantiateEffect>().enabled = true;
         Destroy(gameObject);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Animator playerAnimator;
     [SerializeField] float speed = 5f;
 
     Rigidbody rb;
@@ -43,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = transform.forward * Input.GetAxis("Vertical") * speed
                             + transform.right * Input.GetAxis("Horizontal") * speed
                             + -transform.up * gravity;
+
+        if (Input.GetAxisRaw("Vertical") == 1)
+        {
+            Debug.Log("Moving");
+            playerAnimator.SetBool("Idle", false);
+        } else playerAnimator.SetBool("Idle", true);
     }
 
     private void notGrounded()

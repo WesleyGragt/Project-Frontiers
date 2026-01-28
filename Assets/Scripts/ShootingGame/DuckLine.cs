@@ -48,7 +48,6 @@ public class DuckLine : MonoBehaviour
 
     private bool CheckDistance()
     {
-        Debug.Log(spawnPosition.x + spacing);
         if (ducks.Count == 0) return false;
 
         Vector3 lastDuckPos = ducks[ducks.Count - 1].transform.position;

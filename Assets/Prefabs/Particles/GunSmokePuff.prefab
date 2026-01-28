@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1083575850328222767}
   - component: {fileID: 3570840246205974074}
   - component: {fileID: 3035095258390831734}
+  - component: {fileID: 3748241928336633158}
   m_Layer: 0
   m_Name: GunSmokePuff
   m_TagString: Untagged
@@ -4894,3 +4895,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3748241928336633158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331673147801521534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1055daec09c6f7e4b9322800498cdb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 3

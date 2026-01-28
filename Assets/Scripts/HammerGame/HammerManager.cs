@@ -1,9 +1,5 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.XR.Haptics;
-using UnityEngine.Rendering.UI;
-using UnityEngine.UI;
 
 public class HammerManager : MonoBehaviour
 {
@@ -37,9 +33,12 @@ public class HammerManager : MonoBehaviour
     private bool smashedBall = false;
 
     private float maxBallHeight = 0f;
+    private Animator hammerPivot;
 
     private void Start()
     {
+        hammerPivot = hammer.transform.parent.GetComponent<Animator>();
+
         col = gameObject.GetComponent<Collider>();
         ballRB = ball.GetComponent<Rigidbody>();
     }
@@ -53,8 +52,9 @@ public class HammerManager : MonoBehaviour
         timerText.text = $"{timeTillSmash}:00";
 
         camLock.LockCamera();
-        hammer.SetActive(true);
-        hammer.GetComponent<Animator>().enabled = false;
+        hammerPivot.enabled = false;
+
+        hammer.GetComponent<MeshRenderer>().enabled = true;
 
         gameStarted = true;
     }
@@ -62,8 +62,6 @@ public class HammerManager : MonoBehaviour
     private void Update()
     {
         if (!gameStarted) return;
-
-        hammer.SetActive(true);
 
         if (!startTimer && Input.GetKeyDown(KeyCode.Space))
         {
@@ -75,7 +73,7 @@ public class HammerManager : MonoBehaviour
 
         if (!startTimer) return;
 
-        if (!hammer.GetComponent<Animator>().enabled)
+        if (!hammerPivot.enabled)
         {
             powerUp();
         }
@@ -86,10 +84,9 @@ public class HammerManager : MonoBehaviour
             {
                 ballRB.AddForce(Vector3.up * currentPower, ForceMode.Impulse);
                 
-                hammer.GetComponent<Animator>().enabled = true;
+                hammerPivot.enabled = true;
+                hammerPivot.Play("HammerSmash", -1, 0);
 
-                camLock.UnlockCamera();
-                
                 smashedBall = true;
                 
                 if (showUI != null)
@@ -170,8 +167,6 @@ public class HammerManager : MonoBehaviour
 
         col.enabled = true;
         timerText.transform.parent.gameObject.SetActive(false);
-        hammer.GetComponent<Animator>().enabled = false;
-        hammer.SetActive(false);
     }
 
     public void pointsToTickets()

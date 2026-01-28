@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 391730309175894111}
   - component: {fileID: 2383283249339402902}
   - component: {fileID: 878705668975820775}
+  - component: {fileID: 1086374145596399115}
   m_Layer: 0
   m_Name: HitLines
   m_TagString: Untagged
@@ -4892,3 +4893,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1086374145596399115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527159651141530780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1055daec09c6f7e4b9322800498cdb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 3
