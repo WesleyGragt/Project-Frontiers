@@ -70,7 +70,7 @@ public class ShootingGame : MonoBehaviour
 
     private void Shooting()
     {
-        pointText.text = $"{startPointText} {shootingPoints}";
+        UpdateUI();
         bulletText.text = $"{startBulletText} {curBullets}";
         
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
@@ -109,5 +109,43 @@ public class ShootingGame : MonoBehaviour
     {
         TicketSystem.tickets = shootingPoints;
         shootingPoints = 0;
+        pointText.text = "";
+    }
+
+
+    void UpdateUI()
+    {
+        string pointsStr = shootingPoints.ToString("#");
+        if (shootingPoints == 0)
+        {
+            pointsStr = "000";
+        }
+        else
+        {
+            if (pointsStr.Length == 2)
+            {
+                pointsStr = "0" + pointsStr;
+            }
+            else if (pointsStr.Length == 1)
+            {
+                pointsStr = "00" + pointsStr;
+            }
+        }
+
+        string updatedPointsString = "";
+        foreach (char character in pointsStr)
+        {
+            if (character == '1')
+            {
+                updatedPointsString += " " + character;
+            }
+            else
+            {
+                updatedPointsString += character;
+            }
+        }
+
+
+        pointText.text = updatedPointsString;
     }
 }
