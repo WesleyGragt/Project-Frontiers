@@ -73,7 +73,7 @@ public class ShootingGame : MonoBehaviour
     private void Shooting()
     {
         UpdateUI();
-        bulletText.text = $"{startBulletText} {curBullets}";
+        bulletText.text = $"{startBulletText}{curBullets}";
         
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
         {

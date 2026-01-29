@@ -7,6 +7,7 @@ public class HammerManager : MonoBehaviour
     [SerializeField] private GameObject showUI;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject hammer;
+    [SerializeField] private MeshRenderer hammerOnTable;
     [SerializeField] private GameObject ball;
     [Space]
     [SerializeField] private float heightToWin = 25f;
@@ -14,6 +15,7 @@ public class HammerManager : MonoBehaviour
     [Space]
     [SerializeField] private float powerPerTap = 1f;
     [SerializeField] private float powerLossPerSec = 2f;
+    [SerializeField] private float powerToWin = 30f;
 
     private Rigidbody ballRB;
 
@@ -35,8 +37,12 @@ public class HammerManager : MonoBehaviour
     private float maxBallHeight = 0f;
     private Animator hammerPivot;
 
+    private Vector3 startBalLPos;
+
     private void Start()
     {
+        startBalLPos = ball.transform.position;
+
         hammerPivot = hammer.transform.parent.GetComponent<Animator>();
 
         col = gameObject.GetComponent<Collider>();
@@ -54,6 +60,7 @@ public class HammerManager : MonoBehaviour
         camLock.LockCamera();
         hammerPivot.enabled = false;
 
+        hammerOnTable.enabled = false;
         hammer.GetComponent<MeshRenderer>().enabled = true;
 
         gameStarted = true;
@@ -82,6 +89,8 @@ public class HammerManager : MonoBehaviour
         {
             if (!smashedBall)
             {
+                currentPower = Mathf.Clamp(currentPower, 0, powerToWin);
+
                 ballRB.AddForce(Vector3.up * currentPower, ForceMode.Impulse);
                 
                 hammerPivot.enabled = true;
@@ -120,7 +129,7 @@ public class HammerManager : MonoBehaviour
 
         if (currentPower < 0) currentPower = 0;
 
-        Debug.Log(currentPower);
+        Debug.Log($"Current Power: {currentPower}");
     }
 
     private void BallHeight()
@@ -132,7 +141,7 @@ public class HammerManager : MonoBehaviour
             maxBallHeight = ball.transform.position.y;
         }
 
-        if (ball.transform.position.y < maxBallHeight || ball.transform.position.y > heightToWin)
+        if (ball.transform.position.y < maxBallHeight/* || ball.transform.position.y > heightToWin*/)
         {
             ballRB.linearVelocity = ballRB.linearVelocity * -0.1f;
 
@@ -152,6 +161,7 @@ public class HammerManager : MonoBehaviour
         else if (ball.transform.position.y < maxBallHeight)
         {
             Debug.Log("Failed to reach Height");
+            Debug.Log($"{ball.transform.position.y} reached. Required height of: {heightToWin}");
 
             resetGame();
         }
@@ -166,6 +176,7 @@ public class HammerManager : MonoBehaviour
         smashedBall = false;
 
         col.enabled = true;
+        hammerOnTable.enabled = true;
         timerText.transform.parent.gameObject.SetActive(false);
     }
 

@@ -3,7 +3,7 @@
 Sparkles: You like balls?
 -> Ofcourse! I love them!
     Sparkles: Well, you are in LUCK!!!
-    Sparkles: In this game your goal is to throw THE balls against those cans over there!
+    Sparkles: In this game your goal is to throw BALLS against those cans over there!
     Sparkles: Take some time charging that throw beforehand!
     Sparkles: When you knock the cans over YOU GET POINTS!!!
     Sparkles: WOOOOOOOOO!!
@@ -40,13 +40,13 @@ Sparkles: You like to smash?
 
 title: WhackAMole
 ---
-Sparkles: It's time to whack A mole!!!
+Sparkles: It's time to whack the mole!!!
 Player: Weird way to say that, but...
 ->  Sure?
     Sparkles: Get back that ENTHUSIASM!!
     Sparkles: This is a FUNfair after all!
     Sparkles: In this game you gotta WHACK. THOSE. MOLES!
-    Sparkles: However, they are fighting back somehow...[]+
+    Sparkles: However, they are fighting back somehow...
     Sparkles: Just make sure not to whack the bombs.
     Sparkles: Don't ask me how they got them. I don't know either…
 -> Not if you say it like that...

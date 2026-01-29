@@ -32,7 +32,7 @@ public class Throw : MonoBehaviour
         {
             if (chargeTime < maxChargeTime)
             {
-                chargeTime += 5f;
+                chargeTime += 2f;
             }
         }
 

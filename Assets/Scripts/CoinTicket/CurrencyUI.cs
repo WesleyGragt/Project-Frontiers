@@ -20,7 +20,7 @@ public class CurrencyUI : MonoBehaviour
 
     private void Update()
     {
-        coinAmountText.text = coinText + " " + coins.value;
-        ticketAmountText.text = ticketText + " " + tickets.value;
+        coinAmountText.text = $"{coinText}{coins.value}";
+        ticketAmountText.text = $"{ticketText}{tickets.value}";
     }
 }

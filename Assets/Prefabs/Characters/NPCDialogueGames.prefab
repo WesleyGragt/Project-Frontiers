@@ -579,8 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 380300655637083919, guid: 0a8c34bc13af29448a0800522b2e1f73, type: 3}
-  instantiateOnEnable: 1
-  instantiateOnDisable: 1
+  onEnable: 1
+  onDisable: 1
+  onCollision: 0
   scaleMultiplier: 1
 --- !u!4 &5391136421715702750 stripped
 Transform:
