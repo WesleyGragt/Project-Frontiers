@@ -57,6 +57,8 @@ public class Throw : MonoBehaviour
                 col.enabled = true;
                 rb.AddForce(transform.forward * chargeTime);
 
+                PickUp.curBall.GetComponent<InstantiateEffect>().enabled = true;
+
                 PickUp.curBall.Thrown = true;
                 PickUp.curBall = null;
                 pickup = false;

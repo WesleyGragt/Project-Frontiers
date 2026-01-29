@@ -77,12 +77,7 @@ public class BallSpawner : MonoBehaviour
     {
         if (Time.time > timerStart + timer)
         {
-            Vector3 randomPosition = new Vector3(
-                Random.Range(-transform.localScale.x / 2, transform.localScale.x / 2),
-                Random.Range(-transform.localScale.y / 2, transform.localScale.y / 2),
-                Random.Range(-transform.localScale.z / 2, transform.localScale.z / 2)
-            );
-            spawnedBalls.Add(Instantiate(ballPrefab, transform.position + randomPosition, Quaternion.identity, transform));
+            spawnedBalls.Add(Instantiate(ballPrefab, transform.position, Quaternion.identity, transform));
 
             timerStart = 0.5f;
             timer = Time.time;
