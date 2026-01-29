@@ -48,9 +48,6 @@ public class WhackAMole : MonoBehaviour
     public Text timeText;
     public Text pointsText;
 
-    [Header("UX")]
-    public GameObject pointGainSound;
-    public GameObject pointLoseSound;
 
 
     private void Start()
@@ -132,19 +129,9 @@ public class WhackAMole : MonoBehaviour
         UpdateUI();
     }
 
-
-    public void GainDoublePoints()
-    {
-        points += pointsPerMole * 2;
-        Instantiate(pointGainSound, transform.position, Quaternion.identity);
-        //add ux things
-        UpdateUI();
-    }
-
     public void LosePoints()
     {
         points -= pointsPerMole;
-        Instantiate(pointLoseSound, transform.position, Quaternion.identity);
         //add ux things
         UpdateUI();
     }
