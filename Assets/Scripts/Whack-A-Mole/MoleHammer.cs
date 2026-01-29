@@ -8,6 +8,7 @@ public class MoleHammer : MonoBehaviour
     public Transform moleWhackHammerPos;
     public Vector3 moleHammerOffset;
     public float moleWhackResetDistance;
+    public GameObject hammerWhooshSound;
 
 
 
@@ -35,6 +36,7 @@ public class MoleHammer : MonoBehaviour
     public void SetWhack()
     {
         lerp.target = moleWhackHammerPos;
+        Instantiate(hammerWhooshSound, transform.position, Quaternion.identity);
     }
 
 

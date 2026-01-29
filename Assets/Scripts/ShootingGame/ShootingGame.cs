@@ -36,8 +36,6 @@ public class ShootingGame : MonoBehaviour
 
     private void Update()
     {
-        UpdateUI();
-
         if (!gameStarted && gameObject.activeInHierarchy)
         {
             curBullets = maxBullets;
@@ -74,6 +72,7 @@ public class ShootingGame : MonoBehaviour
 
     private void Shooting()
     {
+        UpdateUI();
         bulletText.text = $"{startBulletText} {curBullets}";
         
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
