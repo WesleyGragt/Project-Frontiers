@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,7 @@ public class WhackAMole : MonoBehaviour
     public IntVariable coins;
     public GameObject uiHide;
     public MoleHammer hammer;
+    public GameObject interactButton;
 
     [Header("Settings")]
     public float gameTime;
@@ -43,6 +46,7 @@ public class WhackAMole : MonoBehaviour
 
     [Header("States")]
     public bool started;
+    bool canStart = true;
 
     [Header("UI")]
     public Text timeText;
@@ -96,9 +100,11 @@ public class WhackAMole : MonoBehaviour
 
     public void StartGame()
     {
-        if(!started && coins.value >= 1)
+        if(!started && canStart &&coins.value >= 1)
         {
             started = true;
+            canStart = false;
+            interactButton.SetActive(false);
             coins.Decrease();
             hammer.SetIdle();
             cameraLock.LockCamera();
@@ -136,17 +142,18 @@ public class WhackAMole : MonoBehaviour
     public void GainDoublePoints()
     {
         points += pointsPerMole * 2;
-        Instantiate(pointGainSound, transform.position, Quaternion.identity);
-        //add ux things
+        //ux things
         UpdateUI();
+        Instantiate(pointGainSound, transform.position, Quaternion.identity);
     }
 
     public void LosePoints()
     {
         points -= pointsPerMole;
-        Instantiate(pointLoseSound, transform.position, Quaternion.identity);
-        //add ux things
+
+        //ux things
         UpdateUI();
+        Instantiate(pointLoseSound, transform.position, Quaternion.identity);
     }
 
 
@@ -227,13 +234,13 @@ public class WhackAMole : MonoBehaviour
     public void EndGame()
     {
         ResetGame();
+        interactButton.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cameraLock.UnlockCamera();
         uiHide.SetActive(true);
         hammer.PutDown();
-
-        //add ux things
+        StartCoroutine(PlayableCooldown(1));
     }
 
 
@@ -258,5 +265,13 @@ public class WhackAMole : MonoBehaviour
         pointsText.text = "";
         timeText.text = "";
 
+    }
+
+
+    IEnumerator PlayableCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        canStart = true;
     }
 }

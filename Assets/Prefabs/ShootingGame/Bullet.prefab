@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a000c5d9247c51439d5dd3a18a35b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 4501596603172355644, guid: 52926366a6145f34ea48528a35bb5f48, type: 3}
+  pointSound: {fileID: 4501596603172355644, guid: 18992c9c8bc8a0349919f57647e95898, type: 3}
 --- !u!114 &-5902127126724556720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 3527159651141530780, guid: 902543487b028e0498375ae734c158ed, type: 3}
+  instantiateOnEnable: 1
+  instantiateOnDisable: 0
   scaleMultiplier: 0.5
 --- !u!1001 &1800045556129061634
 PrefabInstance:

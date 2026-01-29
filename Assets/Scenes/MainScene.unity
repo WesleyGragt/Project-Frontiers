@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5401416160846908142, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
   m_PrefabInstance: {fileID: 71400067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713216895}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8454aa967ac04e94eb69dc6a407fbfd7, type: 3}
@@ -2424,6 +2424,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1285219695261932991, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: moleHammerOffset.x
+      value: -0.273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285219695261932991, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: moleHammerOffset.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285219695261932991, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
+      propertyPath: moleHammerOffset.z
+      value: 0.196
+      objectReference: {fileID: 0}
     - target: {fileID: 2386609671999676231, guid: e9b64de536d2faa48ba6a3f9662df161, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.11
@@ -3745,7 +3757,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8399050016205352596, guid: 1e9de8c9653d7dd4ab76abbed4a104e2, type: 3}
   m_PrefabInstance: {fileID: 71400067}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71400070}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5b110e3c9d06d94e9a79abb11795728, type: 3}
