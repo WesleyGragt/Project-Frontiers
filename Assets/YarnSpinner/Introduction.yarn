@@ -1,4 +1,19 @@
-﻿title: BallThrow
+﻿title: Start
+---
+Sparkles: Give me your money! 
+Sparkles: I mean, WELCOME to the FUNfair!!!
+Sparkles: Here you can play GAMES to win TICKETS!
+Sparkles: You can then use those tickets to get PRIZES from my depressing assistant, Sprinkle!
+Sparkles: You do have to pay coins to play the games though.
+Sparkles: But hey, it's all for FUN, right?!
+Sparkles: Oh you're poor?
+-> Yes...
+    Sparkles: Well no worries then!
+    Sparkles: Here at the FUNfair, we believe everyone should have FUN!
+    Sparkles: Here's some coins to get you started!
+===
+
+title: BallThrow
 ---
 Sparkles: You like balls?
 -> Ofcourse! I love them!
@@ -71,7 +86,7 @@ title: StoreNotEnoughTickets
 ---
 Sprinkle: What prize do you want?
 Player: That one!
-Sprinkle: That one costs 30 tickets!
+Sprinkle: That one costs 50 tickets!
 Sprinkle: and you appear to not have enough...
 -> How do I get tickets?
     Sprinkle: Play more games!
