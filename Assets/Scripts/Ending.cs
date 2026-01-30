@@ -12,6 +12,8 @@ public class Ending : MonoBehaviour
         {
             if (coins.value != 0) return;
             
+            Cursor.lockState = CursorLockMode.None;
+
             if (prize.activeInHierarchy)
             {
                 SceneManager.LoadScene("EndingGood");
