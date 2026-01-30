@@ -5,6 +5,7 @@ public class HammerManager : MonoBehaviour
 {
     [SerializeField] private CameraLock camLock;
     [SerializeField] private GameObject showUI;
+    [SerializeField] private GameObject gameUI;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject hammer;
     [SerializeField] private MeshRenderer hammerOnTable;
@@ -56,7 +57,7 @@ public class HammerManager : MonoBehaviour
         if (gameStarted) return;
 
         col.enabled = false;
-        timerText.transform.parent.gameObject.SetActive(true);
+        gameUI.SetActive(true);
         timerText.text = $"{timeTillSmash}:00";
 
         camLock.LockCamera();
@@ -145,7 +146,7 @@ public class HammerManager : MonoBehaviour
             maxBallHeight = ball.transform.position.y;
         }
 
-        if (ball.transform.position.y < maxBallHeight/* || ball.transform.position.y > heightToWin*/)
+        if (ball.transform.position.y < maxBallHeight)
         {
             ballRB.linearVelocity = ballRB.linearVelocity * -0.1f;
 
@@ -182,7 +183,7 @@ public class HammerManager : MonoBehaviour
 
         col.enabled = true;
         hammerOnTable.enabled = true;
-        timerText.transform.parent.gameObject.SetActive(false);
+        gameUI.SetActive(false);
     }
 
     public void pointsToTickets()
