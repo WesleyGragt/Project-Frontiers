@@ -9,6 +9,7 @@ public class Throw : MonoBehaviour
     public bool pickup = false;
     [Space]
     [SerializeField] float maxChargeTime = 1000f;
+    public GameObject throwSound;
     
     private float chargeTime = 0f;
 

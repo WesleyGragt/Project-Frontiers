@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Thrown: 0
   timeTillDestroy: 5
+  hitSound: {fileID: 4501596603172355644, guid: 38b3c4b59f4fbaf4986f8fc8b68650b6, type: 3}
+  hitCanSound: {fileID: 4501596603172355644, guid: 85422db5821cef648a382f061ccf052b, type: 3}
 --- !u!114 &8555519516683391097
 MonoBehaviour:
   m_ObjectHideFlags: 0

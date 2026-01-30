@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private CameraControls cameraControl;
     [SerializeField] private PlayerMovement playerMovement;
+    [Header("States")]
+    public bool canPause = true;
 
     void Update()
     {
@@ -19,6 +21,8 @@ public class PauseMenu : MonoBehaviour
     public void TogglePauseMenu()
     {
         if (pauseMenu == null) return;
+        if (!canPause) return;
+
 
         bool isActive = pauseMenu.activeSelf;
         pauseMenu.SetActive(!isActive);

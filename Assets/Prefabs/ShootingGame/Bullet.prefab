@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2025905654604745899}
   - component: {fileID: -2147913394498515339}
   - component: {fileID: -5902127126724556720}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 3527159651141530780, guid: 902543487b028e0498375ae734c158ed, type: 3}
-  instantiateOnEnable: 1
-  instantiateOnDisable: 0
+  onEnable: 1
+  onDisable: 0
+  onCollision: 0
   scaleMultiplier: 0.5
 --- !u!1001 &1800045556129061634
 PrefabInstance:
@@ -221,6 +222,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 26339a287642021439ac52380ae54218, type: 3}
       propertyPath: m_Name
       value: Assets_Fleur
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26339a287642021439ac52380ae54218, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691841277469900864, guid: 26339a287642021439ac52380ae54218, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

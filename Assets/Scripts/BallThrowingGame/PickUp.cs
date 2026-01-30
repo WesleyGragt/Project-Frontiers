@@ -12,6 +12,13 @@ public class PickUp : MonoBehaviour
 
     public float timeTillDestroy = 5f;
 
+    [Header("Sounds")]
+    public GameObject hitSound;
+    public GameObject hitCanSound;
+
+    bool hasHitCan;
+    bool hasHitOther;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,5 +44,19 @@ public class PickUp : MonoBehaviour
 
         transform.position = Throw.HoldPoint.transform.position;
         transform.parent = Throw.HoldPoint.transform;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Can" && !hasHitCan)
+        {
+            hasHitCan = true;
+            Instantiate(hitCanSound, transform.position, Quaternion.identity);
+        }
+        else if(hasHitOther)
+        {
+            hasHitOther = true;
+            Instantiate(hitSound, transform.position, Quaternion.identity);
+        }
     }
 }

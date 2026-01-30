@@ -47,6 +47,7 @@ public class ShootingGame : MonoBehaviour
         }
 
         AimAtCameraPos();
+        UpdateUI();
 
         if (lookingAtNpc()) return;
         Shooting();
@@ -55,26 +56,32 @@ public class ShootingGame : MonoBehaviour
     private void AimAtCameraPos()
     {
         Ray ray = new Ray(camera.position, camera.forward);
-        Physics.Raycast(ray, out RaycastHit hitInfo);
+        if(Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            if (hitInfo.point == Vector3.zero) return;
+            transform.LookAt(hitInfo.point);
+        }
 
-        if (hitInfo.point == Vector3.zero) return;
-        transform.LookAt(hitInfo.point);
     }
 
     private bool lookingAtNpc()
     {
         Ray ray = new Ray(camera.position, camera.forward);
-        Physics.Raycast(ray, out RaycastHit hitInfo);
+        
+        if(Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            if(hitInfo.transform.parent == null) return false;
+            if (hitInfo.transform.parent.name == "NPCS") return true;
 
-        if (hitInfo.transform.parent.name == "NPCS") return true;
+        }
+
+
 
         return false;
     }
 
     private void Shooting()
     {
-        UpdateUI();
-        bulletText.text = $"{startBulletText}{curBullets}";
         
         if (Input.GetMouseButtonDown(0) && curBullets > 0)
         {
@@ -88,6 +95,7 @@ public class ShootingGame : MonoBehaviour
             instance.GetComponent<Rigidbody>().AddForce(transform.forward * 3000f);
 
             curBullets--;
+            bulletText.text = $"{startBulletText}{curBullets}";
         }
 
         if (curBullets == 0)
@@ -109,6 +117,8 @@ public class ShootingGame : MonoBehaviour
 
             curBullets = maxBullets;
 
+            pointText.text = "";
+
             canvas.SetActive(false);
             gameObject.SetActive(false);
         }
@@ -124,6 +134,7 @@ public class ShootingGame : MonoBehaviour
 
     void UpdateUI()
     {
+        bulletText.text = $"{startBulletText}{curBullets}";
         string pointsStr = shootingPoints.ToString("#");
         if (shootingPoints == 0)
         {

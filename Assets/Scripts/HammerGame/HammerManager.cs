@@ -16,6 +16,8 @@ public class HammerManager : MonoBehaviour
     [SerializeField] private float powerPerTap = 1f;
     [SerializeField] private float powerLossPerSec = 2f;
     [SerializeField] private float powerToWin = 30f;
+    public GameObject bellSound;
+    public GameObject whooshSound;
 
     private Rigidbody ballRB;
 
@@ -95,6 +97,8 @@ public class HammerManager : MonoBehaviour
                 
                 hammerPivot.enabled = true;
                 hammerPivot.Play("HammerSmash", -1, 0);
+                Instantiate(whooshSound, transform.position, Quaternion.identity);
+
 
                 smashedBall = true;
                 
@@ -154,6 +158,7 @@ public class HammerManager : MonoBehaviour
         if (maxBallHeight > heightToWin)
         {
             currentPoints += pointsGain;
+            Instantiate(bellSound, new Vector3(transform.position.x, transform.position.y + maxBallHeight, transform.position.z), Quaternion.identity);
             Debug.Log($"Reached required height, gained {pointsGain} points. New total: {currentPoints}");
 
             resetGame();

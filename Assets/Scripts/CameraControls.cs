@@ -9,6 +9,7 @@ public class CameraControls : MonoBehaviour
     public Camera camera;
     public PlayerMovement player;
     public bool isLocked = false;
+    public GameObject mouseIcon;
 
     private void Start()
     {
@@ -43,13 +44,22 @@ public class CameraControls : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 2f))
         {
-            if (hitInfo.transform.tag != "Interactable") return;
+            if (hitInfo.transform.tag != "Interactable")
+            {
+                mouseIcon.SetActive(false);
+                return;
+            }
 
+            mouseIcon.SetActive(true);
             Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
             if (interactable != null && Input.GetMouseButtonDown(0))
             {
                 interactable.Interact();
             }
+        }
+        else
+        {
+            mouseIcon.SetActive(false);
         }
     }
 
