@@ -86,7 +86,7 @@ title: StoreNotEnoughTickets
 ---
 Sprinkle: What prize do you want?
 Player: That one!
-Sprinkle: That one costs 50 tickets!
+Sprinkle: That one costs 30 tickets!
 Sprinkle: and you appear to not have enough...
 -> How do I get tickets?
     Sprinkle: Play more games!

@@ -10,17 +10,16 @@ public class Ending : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (coins.value != 0) return;
-            
-            Cursor.lockState = CursorLockMode.None;
 
-            if (prize.activeInHierarchy)
+            if (!prize.activeInHierarchy && coins.value == 0)
             {
-                SceneManager.LoadScene("EndingGood");
-            }
-            else
-            {
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("EndingBad");
+            }
+            else if (prize.activeInHierarchy)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene("EndingGood");
             }
         }
     }

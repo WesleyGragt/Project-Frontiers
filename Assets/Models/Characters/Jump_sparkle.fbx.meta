@@ -3,7 +3,32 @@ guid: ebb7bad798b149140b41eda2a7460d77
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue.001
+    second: {fileID: 2100000, guid: dd3510cc7ecc68d49a91940ff176a7f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red.001
+    second: {fileID: 2100000, guid: bb652f1a92d5de846a083313e357cfcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skincolour
+    second: {fileID: 2100000, guid: 1fab2c9ccd7b5b3408bcce5a7223b844, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: softpink.001
+    second: {fileID: 2100000, guid: 4728595165853d6429d35bdc12dc5612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow
+    second: {fileID: 2100000, guid: c702a8f4595f88b4886e8cd08ce899a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

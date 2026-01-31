@@ -3,7 +3,42 @@ guid: 03bae9545f854894ab1049fe4aa00f79
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue.002
+    second: {fileID: 2100000, guid: c0f0c1085fd19a54db5b3f08264f5ca3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: creme.002
+    second: {fileID: 2100000, guid: 89876c48e2089594094a80ef4e8e0965, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange.002
+    second: {fileID: 2100000, guid: a60175d231024da45b45bd52715c541b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red.002
+    second: {fileID: 2100000, guid: 9ef46da2f8e7c9e469c6a585e51d38d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skincolour.002
+    second: {fileID: 2100000, guid: 7f8fc4eecf62a824f9b62be9fb49240d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: softpink.002
+    second: {fileID: 2100000, guid: 531410ad73ab0b546ae00df8fe2976e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow.002
+    second: {fileID: 2100000, guid: 84b4bf8cdae3a7a43abfa7d84e2b33a7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

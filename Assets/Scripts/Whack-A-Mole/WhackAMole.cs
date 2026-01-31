@@ -161,6 +161,7 @@ public class WhackAMole : MonoBehaviour
     {
         TicketSystem.tickets = amountedPoints / pointsToTicketsConversion;
         points = 0;
+        amountedPoints = 0;
     }
     
 
